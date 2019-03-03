@@ -7,6 +7,7 @@ import { FormControl, FormGroup, FormBuilder, Validators} from '@angular/forms';
 })
 export class ContactComponent implements OnInit {
  contactForm: FormGroup;
+ //  submitted: false;
   constructor(private fb: FormBuilder) { }
 
   ngOnInit() {
@@ -21,6 +22,12 @@ export class ContactComponent implements OnInit {
   }
   onSubmit() {
     console.warn(this.contactForm.value.name);
+    //  this.submitted = true;
+    if (this.contactForm.invalid) {
+      return;
+    }
+    alert('SUCCESS!! :-)\n\n' + JSON.stringify(this.contactForm.value));
+    this.contactForm.reset();
   }
 
 }
